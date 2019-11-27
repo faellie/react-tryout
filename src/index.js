@@ -4,6 +4,8 @@ import './index.css';
 import ShoppingListPart from './myParts.js'
 import MyList from './comp/myList';
 
+import Rect from './comp/rect';
+
 const myUtils = require('./utils');
 
 /*class Square extends React.Component {
@@ -148,7 +150,8 @@ class Game extends React.Component {
 
 class MyApp extends React.Component {
     state = {
-        contacts: []
+        contacts: [],
+        rect:{"width":5.0, hight:4.0}
     }
     render(){
         return (
@@ -170,20 +173,32 @@ class MyApp extends React.Component {
                 <h1> Try JS functions from import</h1>
                 <p>{myUtils.getHelloFromImport('mark')} </p>
 
-                <h1> Return from rest call</h1>
-                <p><MyList contacts={this.state.contacts} /></p>
+                {/*<h1> Return from rest call</h1>
+                <p><MyList contacts={this.state.contacts} /></p>*/}
+
+                <h1> Return from another rest call</h1>
+                <p><Rect rect={this.state.rect} /></p>
+
             </div>
         )
     }
 
     componentDidMount() {
-        fetch('http://jsonplaceholder.typicode.com/users')
+        /*fetch('http://jsonplaceholder.typicode.com/users')
             .then(res => res.json())
             .then((data) => {
                 this.setState({ contacts: data })
             })
+            .catch(console.log)*/
+        fetch('http://localhost:8081/rest/rect')
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({ rect: data })
+            })
             .catch(console.log)
     }
+
+
 }
 
 class ShoppingList extends React.Component {

@@ -1,0 +1,6 @@
+Nov 27, 2019 added a component (rect.js) to simply display the height and width of a rect
+that is retrieve from rest API from repo thymeleaf.
+
+Next step will be do a edit form for with both get and post.
+
+
